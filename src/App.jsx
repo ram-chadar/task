@@ -14,7 +14,7 @@ function App() {
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
-    setFormData((oldForm) => ({ ...oldForm, [name]: value }));
+    setFormData((old) => ({ ...old, [name]: value }));
   };
 
   const resetData = () => {
@@ -32,9 +32,9 @@ function App() {
     if (editIndex === null) {
       setListOfForm((oldList) => [...oldList, formData]);
     } else {
-      const updatedList = [...listOfForm];
-      updatedList[editIndex] = formData;
-      setListOfForm(updatedList);
+      const updated=[...listOfForm];
+      updated[editIndex]=formData;
+      setListOfForm(updated);
 
       setEditIndex(null);
       resetData();
@@ -44,12 +44,9 @@ function App() {
   };
 
   const deleteData = (index) => {
-    let updatedList = listOfForm.filter((_, i) => i != index);
+    const updatedList = listOfForm.filter((data, i) => i != index);
     setListOfForm(updatedList);
-
-    listOfForm.toString;
   };
-  
 
   const showData = (index) => {
     setFormData(listOfForm[index]);
