@@ -12,6 +12,20 @@ function App() {
   const [listOfForm, setListOfForm] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
 
+  const inputHandler = (e) => {
+    const { name, value } = e.target;
+    setFormData((oldForm) => ({ ...oldForm, [name]: value }));
+  };
+
+  const resetData = () => {
+    setFormData({
+      taskAssignee: "",
+      taskName: "",
+      priority: "",
+      status: "",
+    });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -29,25 +43,13 @@ function App() {
     resetData();
   };
 
-  const resetData = () => {
-    setFormData({
-      taskAssignee: "",
-      taskName: "",
-      priority: "",
-      status: "",
-    });
-  };
-  const inputHandler = (e) => {
-    const { name, value } = e.target;
-    setFormData((oldForm) => ({ ...oldForm, [name]: value }));
-  };
-
   const deleteData = (index) => {
     let updatedList = listOfForm.filter((_, i) => i != index);
     setListOfForm(updatedList);
 
     listOfForm.toString;
   };
+  
 
   const showData = (index) => {
     setFormData(listOfForm[index]);
